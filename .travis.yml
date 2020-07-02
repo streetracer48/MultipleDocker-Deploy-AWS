@@ -3,20 +3,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t karim/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t karimmdmirajul/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run karim/react-test npm test -- --coverage
+  - docker run karimmdmirajul/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t karim/multi-client ./client
-  - docker build -t karim/multi-nginx ./nginx
-  - docker build -t karim/multi-server ./server
-  - docker build -t karim/multi-worker ./worker
+  - docker build -t karimmdmirajul/multi-client ./client
+  - docker build -t karimmdmirajul/multi-nginx ./nginx
+  - docker build -t karimmdmirajul/multi-server ./server
+  - docker build -t karimmdmirajul/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push karim/multi-client
-  - docker push karim/multi-nginx
-  - docker push karim/multi-server
-  - docker push karim/multi-worker
+  - docker push karimmdmirajul/multi-client
+  - docker push karimmdmirajul/multi-nginx
+  - docker push karimmdmirajul/multi-server
+  - docker push karimmdmirajul/multi-worker
