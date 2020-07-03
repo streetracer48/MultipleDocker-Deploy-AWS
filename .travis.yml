@@ -21,15 +21,16 @@ after_success:
   - docker push karimmdmirajul/multi-server
   - docker push karimmdmirajul/multi-worker
 deploy:
-  edge: true
   provider: elasticbeanstalk
   region: eu-central-1
   app: multi-docker
   env: MultiDocker-env
   bucket_name: elasticbeanstalk-eu-central-1-626463539633
   bucket_path: docker-multi
+  edge: true
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
-  secret_access_key:
+  secret_access_key: &3
     secure: $AWS_SECRET_KEY
+  secret_access_key: *3
