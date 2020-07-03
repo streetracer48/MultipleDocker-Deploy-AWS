@@ -21,6 +21,7 @@ after_success:
   - docker push karimmdmirajul/multi-server
   - docker push karimmdmirajul/multi-worker
 deploy:
+  edge: true
   provider: elasticbeanstalk
   region: eu-central-1
   app: multi-docker
